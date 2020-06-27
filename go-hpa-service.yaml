@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  go-hpa
+spec:
+  selector:
+    app:  go-hpa
+  type:  LoadBalancer
+  ports:
+  - name:  go-hpa-port
+    port:  8000
+    targetPort:  8000

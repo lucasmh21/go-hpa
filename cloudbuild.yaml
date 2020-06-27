@@ -1,0 +1,15 @@
+substitutions:
+  _GOHPA_VERSION: 0.0.1
+
+steps:
+  - id: "Efetuando testes unitários"
+    name: gcr.io/cloud-builders/go
+    args: ["test", "./src/main/"]
+    env:
+      - "GOPATH=."
+  - id: "Gerando o container"
+    name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "gcr.io/codeeducation-hirao/go-hpa:${_GOHPA_VERSION}", "-t", "gcr.io/codeeducation-hirao/go-hpa:latest", "."]
+images:
+  - 'gcr.io/$PROJECT_ID/go-hpa:latest'
+  - 'gcr.io/$PROJECT_ID/go-hpa:${_GOHPA_VERSION}'

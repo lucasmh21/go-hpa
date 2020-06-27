@@ -6,7 +6,7 @@ steps:
     name: gcr.io/cloud-builders/go
     args: ["test", "./src/main/"]
     env:
-      - "GOPATH=."
+      - "GOPATH=./src/"
   - id: "Gerando o container"
     name: gcr.io/cloud-builders/docker
     args: ["build", "-t", "gcr.io/codeeducation-hirao/go-hpa:${_GOHPA_VERSION}", "-t", "gcr.io/codeeducation-hirao/go-hpa:latest", "."]
